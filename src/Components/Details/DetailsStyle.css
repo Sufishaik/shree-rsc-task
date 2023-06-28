@@ -1,0 +1,56 @@
+span,div {
+    color: white;
+}
+.details-left {
+    float: left;
+    width: 70%;
+    padding: 1rem;
+}
+.titledis {
+    display: inline;
+    margin-left: 0.5rem;
+}
+.info > div span:first-child {
+   
+    display: inline-block;
+    padding: 10px 0;
+    width: 100px;
+   
+}
+
+
+.container::after {
+    content: "";
+    display: block;
+    clear: both;
+    margin-bottom: 4rem;
+}
+
+.rating  {
+    margin-bottom: 2rem;   
+}
+
+.rating span {
+    color: #79b8f3;
+
+}
+
+.plot {
+    margin-bottom: 2rem;
+}
+
+
+.info > div span:first-child {
+   
+    display: inline-block;
+    padding: 10px 0;
+    width: 100px;
+    color: #fff;
+}
+
+.info > div span {
+    color: #79b8f3;
+}
+body {
+    background-color: #0f171e;
+}
