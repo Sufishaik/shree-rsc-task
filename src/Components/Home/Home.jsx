@@ -65,7 +65,37 @@ function Home() {
   }, [currentPage, check])
   return (
     <>
-
+ <ul className="navbar-nav mb-2 mb-lg-0 sort">
+              <li className="nav-item dropdown my-3">
+                <a href="" className="nav-link dropdown-toggle"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  Sort By
+                </a>
+                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li>
+                      
+                    <h5  className="dropdown-item title" style={{cursor : 'pointer'}} onClick={() => handleSorting('title')}>
+                      Title {sorting ? <span>&uarr;</span> : <span>&darr;</span>}
+                    </h5>
+                  </li>
+                  <li>
+                    <h5
+                      className="dropdown-item body"
+                      style={{cursor : 'pointer'}}
+                      onClick={() => handleSorting('body')}
+                    >
+                      Body {sorting ? <span>&uarr;</span> : <span>&darr;</span>}
+                    </h5>
+                  </li>
+                  
+                </ul>
+              </li>
+              
+              
+            </ul>
       <div className=''>
         <input type="text" name="" id="" value={search} onChange={handleSearch} placeholder='Search' className='search' />
       </div>
@@ -143,37 +173,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <ul className="navbar-nav mb-2 mb-lg-0 sort">
-              <li className="nav-item dropdown my-3">
-                <a href="" className="nav-link dropdown-toggle"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  Sort By
-                </a>
-                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li>
-                      
-                    <h5  className="dropdown-item" style={{cursor : 'pointer'}} onClick={() => handleSorting('title')}>
-                      Title {sorting ? <span>&uarr;</span> : <span>&darr;</span>}
-                    </h5>
-                  </li>
-                  <li>
-                    <h5
-                      className="dropdown-item"
-                      style={{cursor : 'pointer'}}
-                      onClick={() => handleSorting('body')}
-                    >
-                      Body {sorting ? <span>&uarr;</span> : <span>&darr;</span>}
-                    </h5>
-                  </li>
-                  
-                </ul>
-              </li>
-              
-              
-            </ul>
+     
     </>
   )
 }
