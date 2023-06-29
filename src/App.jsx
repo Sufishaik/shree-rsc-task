@@ -11,9 +11,11 @@ function App() {
         <Route path='/details/:id' element={<Details/>}/>
       </Routes>
       </BrowserRouter>
-      
+
     </div>
   )
 }
 
 export default App
+
+
