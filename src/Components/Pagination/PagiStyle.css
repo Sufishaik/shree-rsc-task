@@ -1,0 +1,12 @@
+.pagi {
+    margin-left: 10rem;
+}
+.btn-pagi {
+    padding: 0.5rem;
+    border: none;
+    margin-left: 2rem;
+}
+.btn-pagi:hover {
+    background-color: black;
+    color: white;
+}

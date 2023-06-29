@@ -4,11 +4,12 @@ import "../Home/HomeStyle.css"
 import { Link } from 'react-router-dom';
 import left from "../../assets/Vector.svg"
 import right from "../../assets/Vector (15).png"
+import Pagination from '../Pagination/Pagination';
 function Home() {
   const [show, setshow] = useState([]);
-  const [filterSearch, setfilterSearch] = useState([])
+
   const [sorting, setsorting] = useState('asc');
-  const [page, setpage] = useState(1);
+  // const [page, setpage] = useState(1);
   const [sortBy, setsortBy] = useState(null);
   const [currentPage, setcurrentPage] = useState(1);
   const [postPerPage, setpostPerPage] = useState(10);
@@ -45,24 +46,23 @@ function Home() {
 
 
 
-  const getNextPage = () => {
-    setpage(page + 1)
-    setcurrentPage((next) => next + 1)
-  }
-  const getPrevPage = () => {
-    setpage(page - 1)
-    setcurrentPage((prev) => prev - 1)
-  }
+
   const handleSearch = (e) => {
     setsearch(e.target.value);
   }
-  const check = currentPosts.filter((i) => {
-    return i.title.toLowerCase().includes(search.toLowerCase())
+  const check1 = currentPosts.filter((i) => {
+    if( i.title.toLowerCase().includes(search.toLowerCase())) {
+      return i;
+    }
+    if( i.body.toLowerCase().includes(search.toLowerCase())) {
+      return i;
+    }
   })
+  
 
   useEffect(() => {
     fetchAPI(api)
-  }, [currentPage, check])
+  }, [currentPage, check1])
   return (
     <>
  <ul className="navbar-nav mb-2 mb-lg-0 sort">
@@ -120,7 +120,7 @@ function Home() {
               <tbody>
 
                 {
-                  check ? check.map((item) => {
+                  check1 ? check1.map((item) => {
                     return (
                       <>
                         <tr key={item.id}>
@@ -161,7 +161,8 @@ function Home() {
               </tbody>
 
             </table>
-            <div className='pagination'>
+            <Pagination totalPosts={show.length} setcurrentPage={setcurrentPage} postperpage={postPerPage}/>
+            {/* <div className='pagination'>
               <img src={right} alt="" className='right' onClick={getPrevPage} />
 
 
@@ -169,7 +170,7 @@ function Home() {
               <img src={left} alt="" className='left' onClick={getNextPage} />
             
 
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

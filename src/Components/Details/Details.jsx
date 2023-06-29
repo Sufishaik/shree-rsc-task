@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import "../Details/DetailsStyle.css";
 import { useParams } from 'react-router';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 function Details() {
     const [show, setshow] = useState([])
     const { id } = useParams();
@@ -34,9 +35,14 @@ function Details() {
 
                     </div>
                 </div>
+            </div>
+            <div className='home'>
+
+            <Link to="/">
+                 <button className='btn btn-primary'>Back Home</button>
+            </Link>
 
             </div>
-
     </div>
   )
 }
