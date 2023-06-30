@@ -2,14 +2,12 @@ import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import "../Home/HomeStyle.css"
 import { Link } from 'react-router-dom';
-import left from "../../assets/Vector.svg"
-import right from "../../assets/Vector (15).png"
 import Pagination from '../Pagination/Pagination';
 function Home() {
   const [show, setshow] = useState([]);
 
   const [sorting, setsorting] = useState('asc');
-  // const [page, setpage] = useState(1);
+
   const [sortBy, setsortBy] = useState(null);
   const [currentPage, setcurrentPage] = useState(1);
   const [postPerPage, setpostPerPage] = useState(10);
@@ -17,8 +15,7 @@ function Home() {
   const api = "https://jsonplaceholder.typicode.com/posts";
   const fetchAPI = async (url) => {
     const resp = await axios.get(url);
-    // console.log(resp.data);
-    // setdata()
+    
     setshow(resp.data);
   }
   const lastPostIndex = currentPage * postPerPage;
@@ -42,11 +39,6 @@ function Home() {
     return 0;
   })
   const currentPosts = sortedData.slice(firstPostIndex, lastPostIndex)
-
-
-
-
-
   const handleSearch = (e) => {
     setsearch(e.target.value);
   }
@@ -58,44 +50,14 @@ function Home() {
       return i;
     }
   })
-  
+
 
   useEffect(() => {
     fetchAPI(api)
   }, [currentPage, check1])
   return (
     <>
- <ul className="navbar-nav mb-2 mb-lg-0 sort">
-              <li className="nav-item dropdown my-3">
-                <a href="" className="nav-link dropdown-toggle"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  Sort By
-                </a>
-                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li>
-                      
-                    <h5  className="dropdown-item title" style={{cursor : 'pointer'}} onClick={() => handleSorting('title')}>
-                      Title {sorting ? <span>&uarr;</span> : <span>&darr;</span>}
-                    </h5>
-                  </li>
-                  <li>
-                    <h5
-                      className="dropdown-item body"
-                      style={{cursor : 'pointer'}}
-                      onClick={() => handleSorting('body')}
-                    >
-                      Body {sorting ? <span>&uarr;</span> : <span>&darr;</span>}
-                    </h5>
-                  </li>
-                  
-                </ul>
-              </li>
-              
-              
-            </ul>
+ 
       <div className=''>
         <input type="text" name="" id="" value={search} onChange={handleSearch} placeholder='Search' className='search' />
       </div>
@@ -110,10 +72,10 @@ function Home() {
             <table className="table table-bordered" style={{ textAlign: 'center' }}>
               <thead className="bg-dark text-white">
                 <tr>
-                  <th >ID</th>
-                  <th >Title  </th>
-                  <th > Body  </th>
-                  <th>UserID</th>
+                  <th onClick={() => handleSorting('id')}>ID {sorting ? <span>&uarr;</span> : <span>&darr;</span>} </th>
+                  <th onClick={() => handleSorting('title')}>Title {sorting ? <span>&uarr;</span> : <span>&darr;</span>} </th>
+                  <th onClick={() => handleSorting('body')}> Body {sorting ? <span>&uarr;</span> : <span>&darr;</span>}  </th>
+                  <th onClick={() => handleSorting('userid')}>UserID {sorting ? <span>&uarr;</span> : <span>&darr;</span>} </th>
 
                 </tr>
               </thead>
